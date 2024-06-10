@@ -12,6 +12,9 @@ docker_build:
     - docker
 
   script:
+    
+    # We need to remove this so docker looks for the socket `/var/run/docker.sock`
+    - unset DOCKER_HOST
 
     # log in to our container registry
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
