@@ -11,15 +11,10 @@ docker_build:
   tags:
     - docker
 
-  variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_DRIVER: overlay2
-
   script:
     
     # We need to remove this so docker looks for the socket `/var/run/docker.sock`
-#    - unset DOCKER_HOST
+    - unset DOCKER_HOST
 
     # log in to our container registry
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
